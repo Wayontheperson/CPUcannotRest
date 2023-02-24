@@ -21,11 +21,11 @@ def thread_test(num, index):
 
 
 # make thread fool
-thread_1 = threading.Thread(target=thread_test, args=(3000000, 1))
-thread_2 = threading.Thread(target=thread_test, args=(3000000, 2))
-thread_3 = threading.Thread(target=thread_test, args=(3000000, 3))
-thread_4 = threading.Thread(target=thread_test, args=(3000000, 4))
-thread_5 = threading.Thread(target=thread_test, args=(3000000, 5))
+thread_1 = threading.Thread(target=thread_test, args=(9000000, 1))
+thread_2 = threading.Thread(target=thread_test, args=(9000000, 2))
+thread_3 = threading.Thread(target=thread_test, args=(9000000, 3))
+thread_4 = threading.Thread(target=thread_test, args=(9000000, 4))
+thread_5 = threading.Thread(target=thread_test, args=(9000000, 5))
 
 thread_start = time.perf_counter()
 # start thread
@@ -34,13 +34,14 @@ thread_2.start()
 thread_3.start()
 thread_4.start()
 thread_5.start()
-thread_end = time.perf_counter()
 
 thread_1.join()
 thread_2.join()
 thread_3.join()
 thread_4.join()
 thread_5.join()
+
+thread_end = time.perf_counter()
 print(f"multithread run takes {thread_end-thread_start:.5f} sec")
 '''
 threading result is 
@@ -62,12 +63,14 @@ Q. what is the different point between multithread using lock and just for loop 
 my stack over flow Question.
 https://stackoverflow.com/questions/75508198/python-multithreading-is-faster-than-sequential-code-why
 https://stackoverflow.com/questions/75516141/python-multi-threading-with-lock-is-much-faster-why
+
+A. Check sequential_is_fast.py
 '''
 
 def increment():
     global nomal_result
 
-    for _ in range(15_000_000):
+    for _ in range(45_000_000):
         nomal_result += 1
 
 
@@ -83,3 +86,4 @@ print(f"nomal run takes {end_time-start_time:.5f} sec")
  multithread run takes 0.17208 sec
  but nomal run takes 0.38800 sec
 """
+
