@@ -178,6 +178,15 @@ result is:
 map is similar to map(func, *iterables) except:
 but the iterables are collected immediately rather than lazily and 
 func is executed asynchronously and several calls to func may be made concurrently.
+
+map - official docs
+
+When using ProcessPoolExecutor, this method chops iterables into a number of chunks which it submits to the pool as separate tasks. 
+The (approximate) size of these chunks can be specified by setting chunksize to a positive integer. 
+For very long iterables, using a large value for chunksize can significantly improve performance compared to the default size of 1.
+With ThreadPoolExecutor, chunksize has no effect.
+
+https://docs.python.org/3/library/concurrent.futures.html
 """
 
 # Reference
